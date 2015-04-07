@@ -83,21 +83,3 @@ class Jaccard(object):
 	def distance(a, b):
 		return 1 - Jaccard.similarity(a, b)
 
-if __name__ == '__main__':
-		
-	minHash = MinHash(4, 0)
-	tests = ["IONIO NHSI", "IOIOIO NHNHNHSIA"]
-	hashValues = [None for _ in range(len(tests))]
-	noOfShingles = 3
-
-	for idx, test in enumerate(tests):
-		print("TESTING -->", test)
-		hashValues[idx] = minHash.hashString(test, noOfShingles)
-		print("HashValues -->", hashValues[idx])
-
-
-	print("\n============\n")
-
-	print("Jaccard similarity:\t", Jaccard.similarity(hashValues[0], hashValues[1]))
-	
-
