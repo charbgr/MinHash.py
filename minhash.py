@@ -29,8 +29,8 @@ class MinHash(object):
 
 
 	def hashString(self, inputStr, noOfShingles = 2, charChingles = True):
-		def hash(input):
 
+		def hash(input):
 			hashValue = int(input.hexdigest()[:8], 16) #8 bytes of 64 bits
 			for i, hashFunc in enumerate(self.permutations):
 				retValue = hashFunc(hashValue)
@@ -38,7 +38,6 @@ class MinHash(object):
 					hashValues[i] = retValue
 
 		shingles = Shingles.getCharShingles(inputStr, noOfShingles) if charChingles else Shingles.getShinglesFromText(inputStr, noOfShingles)
-	
 		hashValues = [self.MAX_HASH for _ in range(self.numOfHashes)]
 
 		for shingle in shingles:
@@ -48,9 +47,10 @@ class MinHash(object):
 		return hashValues
 
 class Shingles(object):
+
 	def __init__(self):
 		super(Shingles, self).__init__()
-
+		
 	@staticmethod
 	def getCharShingles(input, noOfShingles):
 		return [input[i:i + noOfShingles] for i in range(len(input) - noOfShingles + 1)]
